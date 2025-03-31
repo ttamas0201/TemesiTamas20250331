@@ -1,1 +1,32 @@
-<p>recipes works!</p>
+<div class="container">
+    <h2>Recipes</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Difficulty</th>
+          <th>Rating</th>
+          <th>Cuisine</th>
+          <th colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let recipe of recipes">
+          <td>{{ recipe.id }}</td>
+          <td>{{ recipe.name }}</td>
+          <td>{{ recipe.difficulty }}</td>
+          <td>{{ recipe.rating }}</td>
+          <td>{{ recipe.cuisine }}</td>
+          <td>
+            <button (click)="viewRecipe(recipe.id)">Megtekintés</button>
+          </td>
+          <td>
+            <button (click)="editRecipe(recipe.id)">Szerkesztés</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <router-outlet></router-outlet>
+  </div>

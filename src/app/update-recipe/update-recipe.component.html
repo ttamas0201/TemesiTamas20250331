@@ -1,1 +1,40 @@
-<p>update-recipe works!</p>
+<div class="container">
+    <h2>Edit Recipe</h2>
+    <form [formGroup]="recipeForm">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" formControlName="name">
+        <div *ngIf="recipeForm.get('name')?.invalid && recipeForm.get('name')?.touched">
+          <div *ngIf="recipeForm.get('name')?.errors?.['required']">Name is required</div>
+        </div>
+      </div>
+      
+      <div>
+        <label for="prepTimeMinutes">Preparation Time (minutes):</label>
+        <input type="number" id="prepTimeMinutes" formControlName="prepTimeMinutes">
+        <div *ngIf="recipeForm.get('prepTimeMinutes')?.invalid && recipeForm.get('prepTimeMinutes')?.touched">
+          <div *ngIf="recipeForm.get('prepTimeMinutes')?.errors?.['required']">Preparation time is required</div>
+          <div *ngIf="recipeForm.get('prepTimeMinutes')?.errors?.['min']">Preparation time must be at least 5 minutes</div>
+        </div>
+      </div>
+      
+      <div>
+        <label for="cookTimeMinutes">Cooking Time (minutes):</label>
+        <input type="number" id="cookTimeMinutes" formControlName="cookTimeMinutes">
+        <div *ngIf="recipeForm.get('cookTimeMinutes')?.invalid && recipeForm.get('cookTimeMinutes')?.touched">
+          <div *ngIf="recipeForm.get('cookTimeMinutes')?.errors?.['required']">Cooking time is required</div>
+          <div *ngIf="recipeForm.get('cookTimeMinutes')?.errors?.['min']">Cooking time must be at least 5 minutes</div>
+        </div>
+      </div>
+      
+      <div>
+        <label for="cuisine">Cuisine:</label>
+        <input type="text" id="cuisine" formControlName="cuisine">
+        <div *ngIf="recipeForm.get('cuisine')?.invalid && recipeForm.get('cuisine')?.touched">
+          <div *ngIf="recipeForm.get('cuisine')?.errors?.['required']">Cuisine is required</div>
+        </div>
+      </div>
+      
+      <button type="submit" [disabled]="recipeForm.invalid">Save</button>
+    </form>
+  </div>
